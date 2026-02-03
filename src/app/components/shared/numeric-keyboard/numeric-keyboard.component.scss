@@ -1,0 +1,22 @@
+.numeric-keyboard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.display {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: right;
+}
+
+.buttons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+button {
+  font-size: 16px;
+  padding: 12px;
+}

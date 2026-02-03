@@ -1,0 +1,17 @@
+<mat-toolbar color="primary">
+  <h1 class="app-title">
+    <mat-icon class="logo-icon">shopping_cart</mat-icon>
+    PDV Verdulería
+  </h1>
+  <span class="spacer"></span>
+  <nav class="nav-links">
+    <button mat-button routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+      <mat-icon>point_of_sale</mat-icon>
+      POS
+    </button>
+    <button mat-button routerLink="/admin" routerLinkActive="active">
+      <mat-icon>admin_panel_settings</mat-icon>
+      Admin
+    </button>
+  </nav>
+</mat-toolbar>

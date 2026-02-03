@@ -1,0 +1,162 @@
+<div class="admin-container">
+  <div class="admin-header">
+    <h1>Administración de Productos</h1>
+    <button mat-raised-button color="primary" (click)="openNewProductForm()">
+      <mat-icon>add</mat-icon>
+      Nuevo Producto
+    </button>
+  </div>
+
+  <!-- Products Table -->
+  <div class="table-container">
+    <table class="products-table">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Tipo</th>
+          <th>Precio</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of productService.getAll(); track product.id) {
+          @if (!editingId() || editingId() !== product.id) {
+            <tr>
+              <td>{{ product.name }}</td>
+              <td>{{ product.category }}</td>
+              <td>{{ product.type === 'kg' ? 'x kg' : 'x unidad' }}</td>
+              <td class="price">$ {{ product.price }}</td>
+              <td class="actions">
+                <button mat-icon-button (click)="editProduct(product)">
+                  <mat-icon>edit</mat-icon>
+                </button>
+                <button mat-icon-button color="warn" (click)="deleteProduct(product.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </td>
+            </tr>
+          } @else {
+            <tr class="editing-row">
+              <td>
+                <input
+                  [value]="editForm.name"
+                  (change)="editForm.name = $any($event.target).value"
+                  placeholder="Nombre"
+                  class="edit-input"
+                />
+              </td>
+              <td>
+                <select
+                  [value]="editForm.category"
+                  (change)="editForm.category = $any($event.target).value"
+                  class="edit-select"
+                >
+                  <option value="frutas">Frutas</option>
+                  <option value="verduras">Verduras</option>
+                  <option value="ofertas">Ofertas</option>
+                  <option value="varios">Varios</option>
+                </select>
+              </td>
+              <td>
+                <select
+                  [value]="editForm.type"
+                  (change)="editForm.type = $any($event.target).value"
+                  class="edit-select"
+                >
+                  <option value="kg">x kg</option>
+                  <option value="unidad">x unidad</option>
+                </select>
+              </td>
+              <td>
+                <input
+                  type="number"
+                  [value]="editForm.price"
+                  (change)="editForm.price = parseFloat($any($event.target).value)"
+                  placeholder="Precio"
+                  class="edit-input"
+                  step="0.01"
+                />
+              </td>
+              <td class="actions">
+                <button mat-icon-button color="primary" (click)="saveEdit(product)">
+                  <mat-icon>check</mat-icon>
+                </button>
+                <button mat-icon-button (click)="cancelEdit()">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </td>
+            </tr>
+          }
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <!-- New Product Form Modal -->
+  @if (showNewProductForm()) {
+    <div class="modal-overlay" (click)="closeNewProductForm()">
+      <div class="modal-content" (click)="$event.stopPropagation()">
+        <h2>Nuevo Producto</h2>
+        <form (ngSubmit)="saveNewProduct()">
+          <div class="form-field">
+            <label>Nombre:</label>
+            <input
+              [value]="newProduct.name"
+              (change)="newProduct.name = $any($event.target).value"
+              placeholder="Nombre del producto"
+              required
+            />
+          </div>
+
+          <div class="form-field">
+            <label>Categoría:</label>
+            <select
+              [value]="newProduct.category"
+              (change)="newProduct.category = $any($event.target).value"
+              required
+            >
+              <option value="frutas">Frutas</option>
+              <option value="verduras">Verduras</option>
+              <option value="ofertas">Ofertas</option>
+              <option value="varios">Varios</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>Tipo:</label>
+            <select
+              [value]="newProduct.type"
+              (change)="newProduct.type = $any($event.target).value"
+              required
+            >
+              <option value="kg">x kg</option>
+              <option value="unidad">x unidad</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label>Precio:</label>
+            <input
+              type="number"
+              [value]="newProduct.price"
+              (change)="newProduct.price = parseFloat($any($event.target).value)"
+              placeholder="0.00"
+              required
+              step="0.01"
+            />
+          </div>
+
+          <div class="form-buttons">
+            <button type="submit" mat-raised-button color="primary">
+              Guardar
+            </button>
+            <button type="button" mat-stroked-button (click)="closeNewProductForm()">
+              Cancelar
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+</div>

@@ -1,0 +1,12 @@
+<button
+  mat-raised-button
+  class="product-button"
+  (click)="onClick()"
+  [class.selected]="isSelected()"
+>
+  <div class="product-content">
+    <div class="product-name">{{ product().name }}</div>
+    <div class="product-price">$ {{ product().price }}</div>
+    <div class="product-type">{{ product().type === 'kg' ? 'x kg' : 'x unidad' }}</div>
+  </div>
+</button>

@@ -1,0 +1,91 @@
+<div class="editor-container">
+  <div class="editor-header">
+    <h3>{{ item().product.name }}</h3>
+    <button mat-icon-button (click)="onClose()" class="close-btn">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  <div class="editor-body">
+    <div class="field">
+      <label>Tipo:</label>
+      <span class="value">{{ item().product.type === 'kg' ? 'x kg' : 'x unidad' }}</span>
+    </div>
+
+    @if (item().product.type === 'kg') {
+      <div class="field">
+        <label>Peso (kg):</label>
+        <div class="input-with-buttons">
+          <button
+            mat-icon-button
+            (click)="decreaseWeight()"
+            class="qty-btn"
+          >
+            <mat-icon>remove</mat-icon>
+          </button>
+          <input
+            matInput
+            type="number"
+            [(ngModel)]="weight"
+            class="qty-input"
+          />
+          <button
+            mat-icon-button
+            (click)="increaseWeight()"
+            class="qty-btn"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+    } @else {
+      <div class="field">
+        <label>Cantidad:</label>
+        <div class="input-with-buttons">
+          <button
+            mat-icon-button
+            (click)="decreaseQuantity()"
+            class="qty-btn"
+          >
+            <mat-icon>remove</mat-icon>
+          </button>
+          <input
+            matInput
+            type="number"
+            [(ngModel)]="quantity"
+            class="qty-input"
+          />
+          <button
+            mat-icon-button
+            (click)="increaseQuantity()"
+            class="qty-btn"
+          >
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
+      </div>
+    }
+
+    <div class="field">
+      <label>Precio (unitario):</label>
+      <input
+        matInput
+        type="number"
+        [(ngModel)]="price"
+        class="price-input"
+        step="0.01"
+      />
+    </div>
+
+    <div class="field total">
+      <label>Subtotal:</label>
+      <span class="value">$ {{ subtotal }}</span>
+    </div>
+  </div>
+
+  <div class="editor-footer">
+    <button mat-raised-button color="primary" (click)="onConfirm()">
+      Actualizar
+    </button>
+  </div>
+</div>

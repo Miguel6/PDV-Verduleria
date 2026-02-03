@@ -1,0 +1,169 @@
+<div class="payment-container">
+  <div class="payment-header">
+    <button mat-icon-button (click)="goBack()" class="back-btn">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+    <h1>Pago</h1>
+    <div style="width: 40px;"></div>
+  </div>
+
+  <div class="total-display">
+    <span class="label">Total a Cobrar:</span>
+    <span class="amount">$ {{ cartService.total() }}</span>
+  </div>
+
+  <!-- Payment Method Selection -->
+  <div class="payment-methods">
+    <button
+      mat-raised-button
+      (click)="selectPaymentMethod('efectivo')"
+      [class.active]="paymentMethod() === 'efectivo'"
+      class="method-btn"
+    >
+      <mat-icon>attach_money</mat-icon>
+      Efectivo
+    </button>
+    <button
+      mat-raised-button
+      (click)="selectPaymentMethod('tarjeta')"
+      [class.active]="paymentMethod() === 'tarjeta'"
+      class="method-btn"
+    >
+      <mat-icon>credit_card</mat-icon>
+      Tarjeta
+    </button>
+    <button
+      mat-raised-button
+      (click)="selectPaymentMethod('mercadopago')"
+      [class.active]="paymentMethod() === 'mercadopago'"
+      class="method-btn"
+    >
+      <mat-icon>payment</mat-icon>
+      Mercado Pago
+    </button>
+    <button
+      mat-raised-button
+      (click)="selectPaymentMethod('mixto')"
+      [class.active]="paymentMethod() === 'mixto'"
+      class="method-btn"
+    >
+      <mat-icon>shuffle</mat-icon>
+      Mixto
+    </button>
+  </div>
+
+  <!-- Efectivo Payment -->
+  @if (paymentMethod() === 'efectivo') {
+    <div class="payment-form efectivo-form">
+      <div class="form-field">
+        <label>Recibido:</label>
+        <input
+          matInput
+          type="number"
+          [value]="effectiveAmount()"
+          (change)="effectiveAmount.set($any($event.target).value)"
+          placeholder="0.00"
+          class="amount-input"
+        />
+      </div>
+      <div class="form-field">
+        <label>Vuelto:</label>
+        <span class="change-amount">$ {{ calculateChange() }}</span>
+      </div>
+      <app-numeric-keyboard (valueChange)="onKeyboardValue($event)" />
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="confirmPayment()"
+        class="confirm-btn"
+        [disabled]="effectiveAmount() < cartService.total()"
+      >
+        Confirmar Pago
+      </button>
+    </div>
+  }
+
+  <!-- Tarjeta Payment -->
+  @if (paymentMethod() === 'tarjeta') {
+    <div class="payment-form">
+      <div class="payment-pending">
+        <mat-icon class="large-icon">credit_card</mat-icon>
+        <p>Procesando pago con tarjeta...</p>
+        <button mat-raised-button color="primary" (click)="confirmPayment()">
+          Confirmar Pago
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- Mercado Pago Payment -->
+  @if (paymentMethod() === 'mercadopago') {
+    <div class="payment-form">
+      <div class="payment-pending">
+        <mat-icon class="large-icon">qr_code</mat-icon>
+        <p>Escanear QR o código de pago</p>
+        <button mat-raised-button color="primary" (click)="confirmPayment()">
+          Confirmar Pago
+        </button>
+      </div>
+    </div>
+  }
+
+  <!-- Mixto Payment -->
+  @if (paymentMethod() === 'mixto') {
+    <div class="payment-form">
+      <h3>Desglose de Pago</h3>
+      <div class="form-field">
+        <label>Efectivo:</label>
+        <input
+          matInput
+          type="number"
+          [value]="mixedCash()"
+          (change)="mixedCash.set($any($event.target).value)"
+          placeholder="0.00"
+        />
+      </div>
+      <div class="form-field">
+        <label>Tarjeta:</label>
+        <input
+          matInput
+          type="number"
+          [value]="mixedCard()"
+          (change)="mixedCard.set($any($event.target).value)"
+          placeholder="0.00"
+        />
+      </div>
+      <div class="form-field">
+        <label>Mercado Pago:</label>
+        <input
+          matInput
+          type="number"
+          [value]="mixedMercadopago()"
+          (change)="mixedMercadopago.set($any($event.target).value)"
+          placeholder="0.00"
+        />
+      </div>
+      <div class="total-row">
+        <span>Total ingresado:</span>
+        <span>{{ getTotalMixedAmount() }}</span>
+      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="confirmPayment()"
+        [disabled]="getTotalMixedAmount() < cartService.total()"
+        class="confirm-btn"
+      >
+        Confirmar Pago
+      </button>
+    </div>
+  }
+
+  <!-- Cancel Button -->
+  <div class="action-footer">
+    <button mat-stroked-button color="warn" (click)="cancelPayment()">
+      <mat-icon>close</mat-icon>
+      Cancelar
+    </button>
+  </div>
+</div>

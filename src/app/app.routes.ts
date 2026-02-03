@@ -1,3 +1,11 @@
 import { Routes } from '@angular/router';
+import { PosComponent } from './components/pos/pos.component';
+import { PaymentComponent } from './components/payment/payment.component';
+import { AdminComponent } from './components/admin/admin.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', component: PosComponent },
+  { path: 'pago', component: PaymentComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: '**', redirectTo: '' },
+];
