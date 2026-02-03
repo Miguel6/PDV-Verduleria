@@ -1,0 +1,84 @@
+{
+  "app": {
+    "title": "POS Vegetable Store",
+    "version": "v1.0.0"
+  },
+  "navbar": {
+    "logout": "Logout",
+    "settings": "Settings"
+  },
+  "pos": {
+    "title": "Point of Sale",
+    "search": "Search product",
+    "cart": "Shopping Cart",
+    "subtotal": "Subtotal",
+    "discount": "Discount",
+    "total": "Total",
+    "emptyCart": "Empty cart",
+    "checkout": "Checkout",
+    "clear": "Clear"
+  },
+  "payment": {
+    "title": "Payment Method",
+    "selectMethod": "Select payment method",
+    "cash": "Cash",
+    "card": "Credit Card",
+    "mercadoPago": "Mercado Pago",
+    "mixed": "Mixed",
+    "amount": "Amount",
+    "change": "Change",
+    "enterAmount": "Enter amount",
+    "confirm": "Confirm Payment",
+    "cancel": "Cancel",
+    "processing": "Processing...",
+    "success": "Payment successful",
+    "error": "Payment error"
+  },
+  "admin": {
+    "title": "Product Management",
+    "addProduct": "Add Product",
+    "editProduct": "Edit Product",
+    "deleteProduct": "Delete Product",
+    "name": "Name",
+    "price": "Price",
+    "category": "Category",
+    "unit": "Unit",
+    "quantity": "Quantity",
+    "actions": "Actions",
+    "edit": "Edit",
+    "delete": "Delete",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "theme": "Theme",
+    "lightTheme": "Light Theme",
+    "darkTheme": "Dark Theme",
+    "currency": "Currency",
+    "businessName": "Business Name",
+    "address": "Address",
+    "phone": "Phone",
+    "email": "Email",
+    "apiUrl": "API URL",
+    "save": "Save Changes",
+    "cancel": "Cancel",
+    "saved": "Changes saved",
+    "error": "Error saving changes"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "warning": "Warning",
+    "confirm": "Confirm",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "save": "Save",
+    "back": "Back",
+    "close": "Close",
+    "add": "Add"
+  }
+}

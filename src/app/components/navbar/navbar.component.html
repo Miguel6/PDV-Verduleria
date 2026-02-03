@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <h1 class="app-title">
     <mat-icon class="logo-icon">shopping_cart</mat-icon>
-    PDV Verdulería
+    {{ translate('app.title') }}
   </h1>
   <span class="spacer"></span>
   <nav class="nav-links">
@@ -13,8 +13,18 @@
       <mat-icon>admin_panel_settings</mat-icon>
       Admin
     </button>
+    <!-- Theme Toggle Button -->
     <button mat-icon-button (click)="toggleTheme()" class="theme-btn" [title]="'Cambiar a ' + (themeService.currentTheme() === 'light' ? 'dark' : 'light') + ' theme'">
       <mat-icon>{{ themeService.currentTheme() === 'light' ? 'dark_mode' : 'light_mode' }}</mat-icon>
+    </button>
+    <!-- Language Toggle Button -->
+    <button mat-icon-button (click)="toggleLanguage()" class="language-btn" [title]="languageService.getCurrentLanguage() === 'es' ? 'Switch to English' : 'Cambiar a Español'">
+      <mat-icon>language</mat-icon>
+      <span class="language-code">{{ languageService.getCurrentLanguage() | uppercase }}</span>
+    </button>
+    <!-- Settings Button -->
+    <button mat-icon-button (click)="navigateToSettings()" [title]="translate('navbar.settings')">
+      <mat-icon>settings</mat-icon>
     </button>
   </nav>
 </mat-toolbar>

@@ -1,0 +1,84 @@
+{
+  "app": {
+    "title": "PDV Verdulería",
+    "version": "v1.0.0"
+  },
+  "navbar": {
+    "logout": "Cerrar Sesión",
+    "settings": "Configuración"
+  },
+  "pos": {
+    "title": "Punto de Venta",
+    "search": "Buscar producto",
+    "cart": "Carrito de Compras",
+    "subtotal": "Subtotal",
+    "discount": "Descuento",
+    "total": "Total",
+    "emptyCart": "Carrito vacío",
+    "checkout": "Cobrar",
+    "clear": "Limpiar"
+  },
+  "payment": {
+    "title": "Método de Pago",
+    "selectMethod": "Selecciona el método de pago",
+    "cash": "Efectivo",
+    "card": "Tarjeta de Crédito",
+    "mercadoPago": "Mercado Pago",
+    "mixed": "Combinado",
+    "amount": "Monto",
+    "change": "Cambio",
+    "enterAmount": "Ingresa el monto",
+    "confirm": "Confirmar Pago",
+    "cancel": "Cancelar",
+    "processing": "Procesando...",
+    "success": "Pago realizado con éxito",
+    "error": "Error en el pago"
+  },
+  "admin": {
+    "title": "Administración de Productos",
+    "addProduct": "Agregar Producto",
+    "editProduct": "Editar Producto",
+    "deleteProduct": "Eliminar Producto",
+    "name": "Nombre",
+    "price": "Precio",
+    "category": "Categoría",
+    "unit": "Unidad",
+    "quantity": "Cantidad",
+    "actions": "Acciones",
+    "edit": "Editar",
+    "delete": "Eliminar",
+    "save": "Guardar",
+    "cancel": "Cancelar"
+  },
+  "settings": {
+    "title": "Configuración",
+    "language": "Idioma",
+    "theme": "Tema",
+    "lightTheme": "Tema Claro",
+    "darkTheme": "Tema Oscuro",
+    "currency": "Moneda",
+    "businessName": "Nombre del Negocio",
+    "address": "Dirección",
+    "phone": "Teléfono",
+    "email": "Correo Electrónico",
+    "apiUrl": "URL de API",
+    "save": "Guardar Cambios",
+    "cancel": "Cancelar",
+    "saved": "Cambios guardados",
+    "error": "Error al guardar los cambios"
+  },
+  "common": {
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "warning": "Advertencia",
+    "confirm": "Confirmar",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "edit": "Editar",
+    "save": "Guardar",
+    "back": "Atrás",
+    "close": "Cerrar",
+    "add": "Agregar"
+  }
+}
