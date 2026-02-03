@@ -117,11 +117,11 @@
 }
 
 .delete-btn {
-  color: #f44336;
+  color: var(--app-error);
 }
 
 .totals {
-  background: #f9f9f9;
+  background: var(--app-bg-secondary);
   border-radius: 4px;
   padding: 12px;
   margin-bottom: 12px;
@@ -137,16 +137,16 @@
   &.total {
     font-size: 18px;
     font-weight: bold;
-    color: #2196f3;
+    color: var(--app-info);
     margin-top: 8px;
     padding-top: 8px;
-    border-top: 1px solid #e0e0e0;
+    border-top: 1px solid var(--app-border);
   }
 
   input {
     width: 80px;
     padding: 4px 8px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--app-border);
     border-radius: 4px;
   }
 }

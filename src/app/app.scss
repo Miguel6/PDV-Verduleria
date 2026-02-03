@@ -1,10 +1,10 @@
 // Global theme configuration
 :root {
-  --primary-color: #2196f3;
+  --primary-color: var(--app-info);
   --primary-dark: #1976d2;
   --accent-color: #ff4081;
-  --warn-color: #f44336;
-  --success-color: #4caf50;
+  --warn-color: var(--app-error);
+  --success-color: var(--app-success);
 }
 
 // Global styles
@@ -17,7 +17,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  background-color: #f5f5f5;
+  background-color: var(--app-bg-secondary);
 }
 
 app-root {

@@ -15,7 +15,7 @@
   }
 
   &.selected {
-    background-color: #2196f3 !important;
+    background-color: var(--app-info) !important;
     color: white;
     box-shadow: 0 4px 12px rgba(33, 150, 243, 0.4);
   }
