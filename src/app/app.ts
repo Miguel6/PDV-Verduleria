@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject, effect } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,14 @@ import { NavbarComponent } from './components/navbar/navbar.component';
   `,
   styleUrl: './app.scss',
 })
-export class App {}
+export class App {
+  private themeService = inject(ThemeService);
+
+  constructor() {
+    // Inicializar el tema al cargar la aplicación
+    effect(() => {
+      // El effect se ejecuta automáticamente con los cambios del tema
+      this.themeService.currentTheme();
+    });
+  }
+}

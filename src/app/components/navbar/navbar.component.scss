@@ -42,3 +42,12 @@ mat-toolbar {
     border-radius: 4px;
   }
 }
+
+.theme-btn {
+  margin-left: 16px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

@@ -6,6 +6,7 @@
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
 
+// Define light theme
 html {
   height: 100%;
   @include mat.theme((
@@ -16,6 +17,41 @@ html {
     typography: Roboto,
     density: 0,
   ));
+
+  // Custom light theme variables
+  --app-bg-primary: #ffffff;
+  --app-bg-secondary: #f5f5f5;
+  --app-text-primary: #333333;
+  --app-text-secondary: #666666;
+  --app-border: #e0e0e0;
+  --app-card-bg: #ffffff;
+  --app-card-shadow: rgba(0, 0, 0, 0.1);
+}
+
+// Define dark theme
+html.dark-theme {
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+    is-dark: true,
+  ));
+
+  // Custom dark theme variables
+  --app-bg-primary: #121212;
+  --app-bg-secondary: #1e1e1e;
+  --app-text-primary: #ffffff;
+  --app-text-secondary: #b0b0b0;
+  --app-border: #404040;
+  --app-card-bg: #1e1e1e;
+  --app-card-shadow: rgba(0, 0, 0, 0.5);
+
+  body {
+    background-color: var(--app-bg-primary);
+  }
 }
 
 body {
@@ -34,5 +70,19 @@ body {
   // Reset the user agent margin.
   margin: 0;
   height: 100%;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+// Dark theme body styling
+html.dark-theme body {
+  color-scheme: dark;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+}
+
+// Global styles that adapt to theme
+* {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
 /* You can add global styles to this file, and also import other style files */
