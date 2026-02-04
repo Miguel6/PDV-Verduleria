@@ -1,9 +1,9 @@
 <div class="admin-container">
   <div class="admin-header">
-    <h1>Administración de Productos</h1>
+    <h1>{{ 'admin.title' | translate }}</h1>
     <button mat-raised-button color="primary" (click)="openNewProductForm()">
       <mat-icon>add</mat-icon>
-      Nuevo Producto
+      {{ 'admin.addProduct' | translate }}
     </button>
   </div>
 
@@ -12,11 +12,11 @@
     <table class="products-table">
       <thead>
         <tr>
-          <th>Nombre</th>
-          <th>Categoría</th>
-          <th>Tipo</th>
-          <th>Precio</th>
-          <th>Acciones</th>
+          <th>{{ 'admin.name' | translate }}</th>
+          <th>{{ 'admin.category' | translate }}</th>
+          <th>{{ 'admin.unit' | translate }}</th>
+          <th>{{ 'admin.price' | translate }}</th>
+          <th>{{ 'admin.actions' | translate }}</th>
         </tr>
       </thead>
       <tbody>
@@ -97,10 +97,10 @@
   @if (showNewProductForm()) {
     <div class="modal-overlay" (click)="closeNewProductForm()">
       <div class="modal-content" (click)="$event.stopPropagation()">
-        <h2>Nuevo Producto</h2>
+        <h2>{{ 'admin.addProduct' | translate }}</h2>
         <form (ngSubmit)="saveNewProduct()">
           <div class="form-field">
-            <label>Nombre:</label>
+            <label>{{ 'admin.name' | translate }}:</label>
             <input
               [value]="newProduct.name"
               (change)="newProduct.name = $any($event.target).value"
@@ -110,7 +110,7 @@
           </div>
 
           <div class="form-field">
-            <label>Categoría:</label>
+            <label>{{ 'admin.category' | translate }}:</label>
             <select
               [value]="newProduct.category"
               (change)="newProduct.category = $any($event.target).value"
@@ -124,7 +124,7 @@
           </div>
 
           <div class="form-field">
-            <label>Tipo:</label>
+            <label>{{ 'admin.unit' | translate }}:</label>
             <select
               [value]="newProduct.type"
               (change)="newProduct.type = $any($event.target).value"
@@ -136,7 +136,7 @@
           </div>
 
           <div class="form-field">
-            <label>Precio:</label>
+            <label>{{ 'admin.price' | translate }}:</label>
             <input
               type="number"
               [value]="newProduct.price"
@@ -149,10 +149,10 @@
 
           <div class="form-buttons">
             <button type="submit" mat-raised-button color="primary">
-              Guardar
+              {{ 'common.save' | translate }}
             </button>
             <button type="button" mat-stroked-button (click)="closeNewProductForm()">
-              Cancelar
+              {{ 'common.cancel' | translate }}
             </button>
           </div>
         </form>

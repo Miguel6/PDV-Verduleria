@@ -10,6 +10,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-admin',
@@ -24,6 +25,7 @@ import { Product } from '../../models/product';
     MatSelectModule,
     MatFormFieldModule,
     MatTableModule,
+    TranslatePipe,
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
