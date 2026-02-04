@@ -4,7 +4,7 @@
     <button mat-icon-button (click)="cancel()">
       <mat-icon>arrow_back</mat-icon>
     </button>
-    <h1>{{ translate('settings.title') }}</h1>
+    <h1>{{ 'settings.title' | translate }}</h1>
   </div>
 
   <!-- Content -->
@@ -12,14 +12,14 @@
     <!-- Language & Theme Section -->
     <mat-card class="settings-section">
       <mat-card-header>
-        <mat-card-title>{{ translate('common.settings') || 'Preferencias' }}</mat-card-title>
+        <mat-card-title>{{ 'common.settings' | translate: 'Preferencias' }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <!-- Language Selection -->
         <div class="setting-field">
-          <label>{{ translate('settings.language') }}</label>
+          <label>{{ 'settings.language' | translate }}</label>
           <mat-form-field appearance="outline">
-            <mat-label>{{ translate('settings.language') }}</mat-label>
+            <mat-label>{{ 'settings.language' | translate }}</mat-label>
             <mat-select
               [(ngModel)]="settings.language"
               (change)="onLanguageChange(settings.language)"
@@ -33,17 +33,17 @@
 
         <!-- Theme Selection -->
         <div class="setting-field">
-          <label>{{ translate('settings.theme') }}</label>
+          <label>{{ 'settings.theme' | translate }}</label>
           <div class="theme-toggle">
             <mat-slide-toggle
               [checked]="settings.theme === 'dark'"
               (change)="onThemeChange($event.checked)"
             >
               <span *ngIf="settings.theme === 'light'">
-                {{ translate('settings.lightTheme') }}
+                {{ 'settings.lightTheme' | translate }}
               </span>
               <span *ngIf="settings.theme === 'dark'">
-                {{ translate('settings.darkTheme') }}
+                {{ 'settings.darkTheme' | translate }}
               </span>
             </mat-slide-toggle>
           </div>
@@ -51,9 +51,9 @@
 
         <!-- Currency Selection -->
         <div class="setting-field">
-          <label>{{ translate('settings.currency') }}</label>
+          <label>{{ 'settings.currency' | translate }}</label>
           <mat-form-field appearance="outline">
-            <mat-label>{{ translate('settings.currency') }}</mat-label>
+            <mat-label>{{ 'settings.currency' | translate }}</mat-label>
             <mat-select [(ngModel)]="settings.currency">
               <mat-option *ngFor="let currency of availableCurrencies" [value]="currency.code">
                 {{ currency.name }}
@@ -67,13 +67,13 @@
     <!-- Business Information Section -->
     <mat-card class="settings-section">
       <mat-card-header>
-        <mat-card-title>{{ translate('settings.businessName') || 'Información del Negocio' }}</mat-card-title>
+        <mat-card-title>{{ 'settings.businessName' | translate: 'Información del Negocio' }}</mat-card-title>
       </mat-card-header>
       <mat-card-content>
         <!-- Business Name -->
         <div class="setting-field">
           <mat-form-field appearance="outline" class="full-width">
-            <mat-label>{{ translate('settings.businessName') }}</mat-label>
+            <mat-label>{{ 'settings.businessName' | translate }}</mat-label>
             <input matInput [(ngModel)]="settings.businessName" />
           </mat-form-field>
         </div>
@@ -81,7 +81,7 @@
         <!-- Address -->
         <div class="setting-field">
           <mat-form-field appearance="outline" class="full-width">
-            <mat-label>{{ translate('settings.address') }}</mat-label>
+            <mat-label>{{ 'settings.address' | translate }}</mat-label>
             <input matInput [(ngModel)]="settings.address" />
           </mat-form-field>
         </div>
@@ -89,7 +89,7 @@
         <!-- Phone -->
         <div class="setting-field">
           <mat-form-field appearance="outline" class="full-width">
-            <mat-label>{{ translate('settings.phone') }}</mat-label>
+            <mat-label>{{ 'settings.phone' | translate }}</mat-label>
             <input matInput [(ngModel)]="settings.phone" />
           </mat-form-field>
         </div>
@@ -97,7 +97,7 @@
         <!-- Email -->
         <div class="setting-field">
           <mat-form-field appearance="outline" class="full-width">
-            <mat-label>{{ translate('settings.email') }}</mat-label>
+            <mat-label>{{ 'settings.email' | translate }}</mat-label>
             <input matInput type="email" [(ngModel)]="settings.email" />
           </mat-form-field>
         </div>
@@ -109,11 +109,11 @@
   <div class="settings-actions">
     <button mat-raised-button color="primary" (click)="saveSettings()">
       <mat-icon>save</mat-icon>
-      {{ translate('settings.save') }}
+      {{ 'settings.save' | translate }}
     </button>
     <button mat-raised-button (click)="cancel()">
       <mat-icon>close</mat-icon>
-      {{ translate('settings.cancel') }}
+      {{ 'settings.cancel' | translate }}
     </button>
   </div>
 </div>

@@ -7,7 +7,7 @@
       <input
         matInput
         type="text"
-        placeholder="Buscar productos..."
+        [placeholder]="'pos.search' | translate"
         [value]="searchTerm()"
         (input)="searchTerm.set($any($event.target).value)"
         class="search-input"
@@ -80,12 +80,12 @@
 
   <!-- RIGHT SIDE: Cart & Checkout (30%) -->
   <div class="cart-section">
-    <h2>Carrito</h2>
+    <h2>{{ 'pos.cart' | translate }}</h2>
 
     <!-- Cart Items List -->
     <div class="cart-items">
       @if (cartService.items().length === 0) {
-        <div class="empty-cart">Carrito vacío</div>
+        <div class="empty-cart">{{ 'pos.emptyCart' | translate }}</div>
       } @else {
         @for (item of cartService.items(); track item.product.id) {
           <div class="cart-item" (click)="selectCartItem(item)">
@@ -121,11 +121,11 @@
     <!-- Totals -->
     <div class="totals">
       <div class="total-row">
-        <span>Subtotal:</span>
+        <span>{{ 'pos.subtotal' | translate }}:</span>
         <span>$ {{ cartService.subtotal() }}</span>
       </div>
       <div class="total-row">
-        <span>Descuento:</span>
+        <span>{{ 'pos.discount' | translate }}:</span>
         <input
           matInput
           type="number"
@@ -144,7 +144,7 @@
     <div class="action-buttons">
       <button mat-raised-button color="primary" (click)="goToPayment()">
         <mat-icon>payment</mat-icon>
-        Cobrar
+        {{ 'pos.checkout' | translate }}
       </button>
       <button mat-raised-button>
         <mat-icon>schedule</mat-icon>

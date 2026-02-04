@@ -12,6 +12,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { LanguageService } from '../../services/language.service';
 import { ThemeService } from '../../services/theme.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 interface Settings {
   language: 'es' | 'en';
@@ -37,20 +38,17 @@ interface Settings {
     MatCardModule,
     MatIconModule,
     MatSnackBarModule,
+    TranslatePipe,
   ],
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SettingsComponent {
-  private languageService = inject(LanguageService);
-  private themeService = inject(ThemeService);
+  languageService = inject(LanguageService);
+  themeService = inject(ThemeService);
   private snackBar = inject(MatSnackBar);
   private router = inject(Router);
-
-  // Inyectar servicios como públicos para acceder desde el template
-  protected languageService$ = this.languageService;
-  protected themeService$ = this.themeService;
 
   settings: Settings = {
     language: this.languageService.getCurrentLanguage(),
@@ -68,13 +66,6 @@ export class SettingsComponent {
     { code: 'USD', name: 'Dólar Estadounidense (USD)' },
     { code: 'EUR', name: 'Euro (EUR)' },
   ];
-
-  /**
-   * Obtiene la traducción de una clave
-   */
-  translate(key: string): string {
-    return this.languageService.translate(key);
-  }
 
   /**
    * Cambia el idioma
@@ -102,8 +93,8 @@ export class SettingsComponent {
 
     // Mostrar mensaje de éxito
     this.snackBar.open(
-      this.translate('settings.saved'),
-      this.translate('common.close'),
+      this.languageService.translate('settings.saved'),
+      this.languageService.translate('common.close'),
       {
         duration: 3000,
         horizontalPosition: 'end',

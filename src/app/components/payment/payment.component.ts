@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { CartService } from '../../services/cart.service';
 import { SalesService } from '../../services/sales.service';
 import { NumericKeyboardComponent } from '../shared/numeric-keyboard/numeric-keyboard.component';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-payment',
@@ -21,6 +22,7 @@ import { NumericKeyboardComponent } from '../shared/numeric-keyboard/numeric-key
     MatInputModule,
     MatFormFieldModule,
     NumericKeyboardComponent,
+    TranslatePipe,
   ],
   templateUrl: './payment.component.html',
   styleUrl: './payment.component.scss',

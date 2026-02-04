@@ -8,7 +8,7 @@
   </div>
 
   <div class="total-display">
-    <span class="label">Total a Cobrar:</span>
+    <span class="label">{{ 'payment.amount' | translate }}:</span>
     <span class="amount">$ {{ cartService.total() }}</span>
   </div>
 
@@ -56,7 +56,7 @@
   @if (paymentMethod() === 'efectivo') {
     <div class="payment-form efectivo-form">
       <div class="form-field">
-        <label>Recibido:</label>
+        <label>{{ 'payment.cash' | translate }}:</label>
         <input
           matInput
           type="number"
@@ -67,7 +67,7 @@
         />
       </div>
       <div class="form-field">
-        <label>Vuelto:</label>
+        <label>{{ 'payment.change' | translate }}:</label>
         <span class="change-amount">$ {{ calculateChange() }}</span>
       </div>
       <app-numeric-keyboard (valueChange)="onKeyboardValue($event)" />
@@ -78,7 +78,7 @@
         class="confirm-btn"
         [disabled]="effectiveAmount() < cartService.total()"
       >
-        Confirmar Pago
+        {{ 'payment.confirm' | translate }}
       </button>
     </div>
   }
@@ -88,9 +88,9 @@
     <div class="payment-form">
       <div class="payment-pending">
         <mat-icon class="large-icon">credit_card</mat-icon>
-        <p>Procesando pago con tarjeta...</p>
+        <p>{{ 'payment.processing' | translate }}</p>
         <button mat-raised-button color="primary" (click)="confirmPayment()">
-          Confirmar Pago
+          {{ 'payment.confirm' | translate }}
         </button>
       </div>
     </div>
@@ -101,9 +101,9 @@
     <div class="payment-form">
       <div class="payment-pending">
         <mat-icon class="large-icon">qr_code</mat-icon>
-        <p>Escanear QR o código de pago</p>
+        <p>{{ 'payment.processing' | translate }}</p>
         <button mat-raised-button color="primary" (click)="confirmPayment()">
-          Confirmar Pago
+          {{ 'payment.confirm' | translate }}
         </button>
       </div>
     </div>
@@ -114,7 +114,7 @@
     <div class="payment-form">
       <h3>Desglose de Pago</h3>
       <div class="form-field">
-        <label>Efectivo:</label>
+        <label>{{ 'payment.cash' | translate }}:</label>
         <input
           matInput
           type="number"
@@ -124,7 +124,7 @@
         />
       </div>
       <div class="form-field">
-        <label>Tarjeta:</label>
+        <label>{{ 'payment.card' | translate }}:</label>
         <input
           matInput
           type="number"
@@ -134,7 +134,7 @@
         />
       </div>
       <div class="form-field">
-        <label>Mercado Pago:</label>
+        <label>{{ 'payment.mercadoPago' | translate }}:</label>
         <input
           matInput
           type="number"
@@ -144,7 +144,7 @@
         />
       </div>
       <div class="total-row">
-        <span>Total ingresado:</span>
+        <span>{{ 'payment.total' | translate }}:</span>
         <span>{{ getTotalMixedAmount() }}</span>
       </div>
       <button
@@ -154,7 +154,7 @@
         [disabled]="getTotalMixedAmount() < cartService.total()"
         class="confirm-btn"
       >
-        Confirmar Pago
+        {{ 'payment.confirm' | translate }}
       </button>
     </div>
   }
@@ -163,7 +163,7 @@
   <div class="action-footer">
     <button mat-stroked-button color="warn" (click)="cancelPayment()">
       <mat-icon>close</mat-icon>
-      Cancelar
+      {{ 'common.cancel' | translate }}
     </button>
   </div>
 </div>

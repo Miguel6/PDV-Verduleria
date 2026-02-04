@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslatePipe } from '../../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-cart-item-editor',
@@ -17,6 +18,7 @@ import { MatDialog } from '@angular/material/dialog';
     MatButtonModule,
     MatIconModule,
     MatFormFieldModule,
+    TranslatePipe,
   ],
   templateUrl: './cart-item-editor.component.html',
   styleUrl: './cart-item-editor.component.scss',

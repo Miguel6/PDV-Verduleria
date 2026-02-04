@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { ThemeService } from '../../services/theme.service';
 import { LanguageService } from '../../services/language.service';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-navbar',
@@ -18,6 +19,7 @@ import { LanguageService } from '../../services/language.service';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    TranslatePipe,
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',
@@ -37,9 +39,5 @@ export class NavbarComponent {
 
   navigateToSettings(): void {
     this.router.navigate(['/configuracion']);
-  }
-
-  translate(key: string): string {
-    return this.languageService.translate(key);
   }
 }

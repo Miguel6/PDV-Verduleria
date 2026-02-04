@@ -15,6 +15,7 @@ import { Product } from '../../models/product';
 import { ProductButtonComponent } from '../shared/product-button/product-button.component';
 import { CartItemEditorComponent } from './cart-item-editor/cart-item-editor.component';
 import { Router } from '@angular/router';
+import { TranslatePipe } from '../../pipes/translate.pipe';
 
 @Component({
   selector: 'app-pos',
@@ -28,6 +29,7 @@ import { Router } from '@angular/router';
     MatButtonModule,
     MatListModule,
     MatDividerModule,
+    TranslatePipe,
     MatFormFieldModule,
     ProductButtonComponent,
     CartItemEditorComponent,

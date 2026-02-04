@@ -1,7 +1,7 @@
 <mat-toolbar color="primary">
   <h1 class="app-title">
     <mat-icon class="logo-icon">shopping_cart</mat-icon>
-    {{ translate('app.title') }}
+    {{ 'app.title' | translate }}
   </h1>
   <span class="spacer"></span>
   <nav class="nav-links">
@@ -23,7 +23,7 @@
       <span class="language-code">{{ languageService.getCurrentLanguage() | uppercase }}</span>
     </button>
     <!-- Settings Button -->
-    <button mat-icon-button (click)="navigateToSettings()" [title]="translate('navbar.settings')">
+    <button mat-icon-button (click)="navigateToSettings()" [title]="'navbar.settings' | translate">
       <mat-icon>settings</mat-icon>
     </button>
   </nav>
