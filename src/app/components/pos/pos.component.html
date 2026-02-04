@@ -150,9 +150,13 @@
         <mat-icon>schedule</mat-icon>
         En espera
       </button>
-      <button mat-stroked-button color="warn" (click)="cancelSale()">
+      <button 
+        mat-stroked-button 
+        color="warn" 
+        (click)="cancelSale()"
+        [disabled]="cartService.items().length === 0">
         <mat-icon>close</mat-icon>
-        Cancelar
+        {{ 'pos.clear' | translate }}
       </button>
     </div>
   </div>
