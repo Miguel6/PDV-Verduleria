@@ -27,7 +27,6 @@ export class LanguageService {
     // Effect que se dispara CADA VEZ que currentLanguage cambia
     effect(() => {
       const lang = this.currentLanguage();
-      console.log('LanguageService: Cambio detectado a idioma:', lang);
       
       // Marcar como cargando
       this.isLoading.set(true);
@@ -75,27 +74,22 @@ export class LanguageService {
       .get<Translations>(`/assets/i18n/${language}.json`)
       .subscribe({
         next: (data) => {
-          console.log(`Traducciones cargadas para ${language}:`, data);
           this.translations.set(data);
           this.isLoading.set(false);
         },
         error: (error) => {
-          console.error(`Error al cargar traducciones para ${language}:`, error);
           this.isLoading.set(false);
           
           // Si falla, intentar cargar el idioma por defecto
           if (language !== this.DEFAULT_LANGUAGE) {
-            console.log(`Intentando cargar idioma por defecto: ${this.DEFAULT_LANGUAGE}`);
             this.http
               .get<Translations>(`/assets/i18n/${this.DEFAULT_LANGUAGE}.json`)
               .subscribe({
                 next: (data) => {
-                  console.log(`Traducciones por defecto cargadas:`, data);
                   this.translations.set(data);
                   this.isLoading.set(false);
                 },
                 error: (err) => {
-                  console.error(`Error al cargar traducciones por defecto:`, err);
                   this.isLoading.set(false);
                 },
               });
@@ -109,20 +103,14 @@ export class LanguageService {
    */
   private applyLanguage(language: Language): void {
     document.documentElement.lang = language;
-    console.log(`Idioma del documento establecido a: ${language}`);
   }
 
   /**
    * Cambia el idioma actual - ESTE ES EL METODO CLAVE
    */
   setLanguage(language: Language): void {
-    console.log(`setLanguage llamado con: ${language}, idioma actual: ${this.currentLanguage()}`);
-    
     if (language !== this.currentLanguage()) {
-      console.log(`Actualizando idioma de ${this.currentLanguage()} a ${language}`);
       this.currentLanguage.set(language);
-    } else {
-      console.log(`Idioma ya es ${language}, no hay cambio`);
     }
   }
 
@@ -131,7 +119,6 @@ export class LanguageService {
    */
   toggleLanguage(): void {
     const newLanguage = this.currentLanguage() === 'es' ? 'en' : 'es';
-    console.log(`Alternando idioma a: ${newLanguage}`);
     this.setLanguage(newLanguage);
   }
 
@@ -145,7 +132,6 @@ export class LanguageService {
     for (const k of keys) {
       value = value?.[k];
       if (value === undefined) {
-        console.warn(`Traducción no encontrada: ${key}`);
         return defaultValue || key;
       }
     }

@@ -41,7 +41,7 @@ import { TranslatePipe } from '../../pipes/translate.pipe';
 export class PosComponent {
   private productService = inject(ProductService);
   private router = inject(Router);
-  cartService = inject(CartService);
+  public cartService = inject(CartService);
 
   searchTerm = signal('');
   selectedProduct = signal<Product | null>(null);

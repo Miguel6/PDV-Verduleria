@@ -10,8 +10,6 @@ export class TranslatePipe implements PipeTransform {
   private languageService = inject(LanguageService);
 
   transform(key: string, defaultValue?: string): string {
-    // Acceder al signal para asegurar reactividad
-    // Cada cambio en currentLanguage o translations dispara una actualización
     this.languageService.currentLanguage();
     this.languageService.translations();
     
